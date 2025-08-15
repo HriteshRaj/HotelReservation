@@ -1,8 +1,16 @@
 package model;
 
+import commandline.AdminMenu;
+import commandline.MainMenu;
+
+
+
 public class Driver {
     public static void main(String[] args) {
-        Customer customer = new Customer("hritesh","raj","hritesh@gmail.com");
-        System.out.println(customer);
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.mainMenu();
+
+        AdminMenu adminMenu= new AdminMenu();
+        adminMenu.displayAdminMenu();
     }
 }
