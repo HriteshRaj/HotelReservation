@@ -6,6 +6,14 @@ public class Customer {
     private String lastName;
     private String email;
 
+    public Customer(String firstName,String lastName,String email){
+        this.firstName=firstName;
+        this.lastName=lastName;
+
+        this.email=email;
+        emailChecking(email);
+    }
+
     @Override
     public String toString() {
         return
@@ -16,7 +24,7 @@ public class Customer {
 
 
 
-    public Customer(String email){
+    public boolean emailChecking(String email){
         String formattedEmail = email.trim();
 
         if (!formattedEmail.matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$")) {
@@ -24,6 +32,7 @@ public class Customer {
         }else{
             System.out.println("your email is " + formattedEmail);
         }
+        return true;
 
     }
 
