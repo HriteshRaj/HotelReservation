@@ -17,6 +17,13 @@ public class HotelResource {
 
     private final ReservationService reservationService= ReservationService.getInstance();
 
+    private  HotelResource(){
+
+    }
+    private final static  HotelResource instance = new HotelResource();
+    public  static HotelResource getInstance(){
+        return instance;
+    }
 
 
     public Customer getCustomer(String email){

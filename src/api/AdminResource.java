@@ -28,7 +28,7 @@ public class AdminResource {
 
     }
 
-    public void addRoom(List<IRoom> rooms){
+    public void addRoom(Collection<IRoom> rooms){
 
         for(IRoom room:rooms){
 

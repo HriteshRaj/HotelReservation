@@ -13,6 +13,9 @@ public class CustomerService {
 
     private static  CustomerService instance = new CustomerService();
 
+    private CustomerService(){
+
+    }
 
     public static CustomerService getInstance(){
 
@@ -31,7 +34,7 @@ public class CustomerService {
 
     public  Customer getCustomer(String customerEmail){
 
-        return null;
+        return customers.get(customerEmail);
 
     }
     public  Collection<Customer> getAllCustomers(){

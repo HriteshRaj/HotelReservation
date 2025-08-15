@@ -4,6 +4,7 @@ import model.Customer;
 import model.IRoom;
 import model.Reservation;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class ReservationService {
@@ -11,26 +12,32 @@ public class ReservationService {
     ArrayList<Reservation> storeReservation = new ArrayList<>();
 
 
-    HashMap<String,IRoom> rooms = new HashMap<>();
+   private final HashMap<String,IRoom> rooms = new HashMap<>();
 
 
-    private static ReservationService instance = new ReservationService();
-
+    private static final ReservationService instance = new ReservationService();
+    private final String id = UUID.randomUUID().toString();
+    private ReservationService(){
+        System.out.println("reservation id in constructpr" +id);
+    }
 
     public static ReservationService getInstance(){
-
+        System.out.println("reservation id in constructpr" +instance.id);
         return instance;
     }
 
 
 
     public void addRoom(IRoom room){
-
-        rooms.put(room.getRoomNumber(),room);
+        rooms.put(room.getRoomNumber(), room);
+        System.out.println("Added room: " + room.getRoomNumber());
+        System.out.println("Current rooms in system: " + rooms.keySet());
 
     }
 
     public IRoom getARoom(String roomId){
+        System.out.println("Looking for room number: '" + roomId + "'");
+        System.out.println("Available rooms: " + rooms.keySet());
        return rooms.get(roomId);
     }
 

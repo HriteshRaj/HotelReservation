@@ -8,7 +8,7 @@ public class Reservation {
 
     Customer customer;
     IRoom room;
-    Date checkIntDate;
+    Date checkInDate;
     Date checkOutDate;
     public Customer getCustomer() {
         return customer;
@@ -34,12 +34,12 @@ public class Reservation {
         this.checkOutDate = checkOutDate;
     }
 
-    public Date getCheckIntDate() {
-        return checkIntDate;
+    public Date getCheckInDate() {
+        return checkInDate;
     }
 
     public void setCheckIntDate(Date checkIntDate) {
-        this.checkIntDate = checkIntDate;
+        this.checkInDate = checkIntDate;
     }
 
 
@@ -47,13 +47,18 @@ public class Reservation {
     public Reservation(Customer customer, IRoom room, Date checkInDate, Date checkOutDate) {
         this.customer=customer;
         this.room=room;
-        this.checkIntDate=checkInDate;
+        this.checkInDate=checkInDate;
         this.checkOutDate=checkOutDate;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Reservation{" +
+                "Customer=" + customer.getEmail() + ", " +
+                "Room=" + room.getRoomNumber() + ", " +
+                "CheckIn=" + checkInDate + ", " +
+                "CheckOut=" + checkOutDate +
+                '}';
     }
 
 }
