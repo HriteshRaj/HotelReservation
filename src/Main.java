@@ -1,5 +1,15 @@
+import model.Customer;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+
+        Customer customer = new Customer("hritesh@gmail.com");
+
+
+
+
+
+
     }
 }
