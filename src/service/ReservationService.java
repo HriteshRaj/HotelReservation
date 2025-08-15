@@ -11,6 +11,12 @@ public class ReservationService {
     ArrayList<Reservation> storeReservation = new ArrayList<>();
     HashMap<String,IRoom> rooms = new HashMap<>();
 
+    private static ReservationService instance = new ReservationService();
+    public static ReservationService getInstance(){
+        return instance;
+    }
+
+
 
     public void addRoom(IRoom room){
     rooms.put(room.getRoomNumber(),room);
