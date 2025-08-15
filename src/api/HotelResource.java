@@ -8,6 +8,7 @@ import service.ReservationService;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 
 public class HotelResource {
 
@@ -80,10 +81,33 @@ public class HotelResource {
 
     }
     public Collection<IRoom> findARoom(Date checkIn,Date checkOut){
+        Collection<IRoom> availableRoom = reservationService.findRooms(checkIn,checkOut);
 
-        return  reservationService.findRooms(checkIn,checkOut);
+        if(availableRoom.size()!=0){
+            return  availableRoom;
+        }
+        if(availableRoom.size()==0){
+            System.out.println("apology for room not available");
+        }
 
+        long  days= 7L * 24 * 60 * 60 *1000;
+        Date newCheckIn = new Date(checkIn.getTime() + days);
+        Date newCheckOut = new Date(checkOut.getTime() + days);
+
+
+        Collection<IRoom> otherRoom = reservationService.findRooms(newCheckIn,newCheckOut);
+
+        if(otherRoom.size()!=0){
+            return otherRoom;
+        }else{
+            System.out.println(" sorry try after 7 days");
+        }
+
+
+
+        return  availableRoom;
     }
+
 
 
 

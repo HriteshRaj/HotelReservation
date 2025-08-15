@@ -54,6 +54,7 @@ public class MainMenu {
 
                     }
 
+
                     Collection<IRoom> availableRooms = hotelResource.findARoom(checkInDate, checkOutDate);
 
                     if (availableRooms.size() == 0) {

@@ -44,6 +44,15 @@ public class ReservationService {
     public Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate){
 
 
+        for(Reservation res:storeReservation){
+            if(res.getRoom().getRoomNumber().equals(room.getRoomNumber())){
+                if(datesOverLap(checkInDate,checkOutDate,res.getCheckInDate(),res.getCheckOutDate())==1){
+                    System.out.println("apology");
+                    return null;
+                }
+            }
+        }
+
         Reservation res = new Reservation(customer,room,checkInDate,checkOutDate);
 
 
@@ -54,31 +63,19 @@ public class ReservationService {
     }
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate){
 
-        Collection<IRoom> availableRooms = new ArrayList<>();
+        Collection<IRoom> availableRooms = new ArrayList<>(rooms.values());
 
-        for(IRoom room:rooms.values()){
+        for(Reservation res:storeReservation){
 
-        int flag=1;
+            if(datesOverLap(checkInDate,checkOutDate,res.getCheckInDate(),res.getCheckOutDate())==1){
 
-        for(Reservation res: storeReservation){
+                availableRooms.remove(res.getRoom());
 
-            if(res.getRoom().getRoomNumber().equals(room.getRoomNumber())){
-                flag=0;
-
-                break;
             }
 
         }
-        if(flag==1){
 
-            availableRooms.add(room);
-        }
-    }
     return  availableRooms;
-
-
-
-
     }
     public Collection<Reservation> getCustomersReservation(Customer customer){
 
@@ -111,6 +108,15 @@ public class ReservationService {
     public Collection<IRoom>getAllRooms(){
 
         return rooms.values();
+    }
+
+    private int datesOverLap(Date checkin,Date checkout,Date othercheckin,Date othercheckout){
+        boolean res = checkin.before(othercheckout) && othercheckout.after(othercheckin);
+        if(res){
+            return 1;
+        }
+        return 0;
+
     }
 
 

@@ -3,8 +3,8 @@ package model;
 public class FreeRoom extends Room {
 
     public FreeRoom(){
-        super();
-        this.price=0.0;
+        super("",0.0,RoomType.SINGLE);
+
     }
 
     @Override
