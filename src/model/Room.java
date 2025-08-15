@@ -6,6 +6,10 @@ public class Room implements  IRoom{
     Double price;
     RoomType roomType;
 
+    public Room() {
+
+    }
+
 
     @Override
     public String getRoomNumber() {
@@ -32,5 +36,12 @@ public class Room implements  IRoom{
        return "room number =" + roomNumber +
                "room price = "+ price
                +" room type = " + roomType;
+    }
+
+    public Room(String roomNumber, double price, RoomType roomType){
+        this.roomType=roomType;
+        this.price=price;
+        this.roomNumber=roomNumber;
+
     }
 }

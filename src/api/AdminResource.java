@@ -11,6 +11,13 @@ import java.util.List;
 public class AdminResource {
     private final CustomerService customerService = CustomerService.getInstance();
 
+    private final static AdminResource instance = new AdminResource();
+    private AdminResource(){
+
+    }
+    public static AdminResource getInstance(){
+        return  instance;
+    }
 
     private final ReservationService reservationService= ReservationService.getInstance();
 

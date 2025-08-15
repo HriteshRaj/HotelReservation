@@ -10,7 +10,7 @@ public class Driver {
         MainMenu mainMenu = new MainMenu();
         mainMenu.mainMenu();
 
-        AdminMenu adminMenu= new AdminMenu();
-        adminMenu.displayAdminMenu();
+        //AdminMenu adminMenu= new AdminMenu();
+       // adminMenu.displayAdminMenu();
     }
 }
