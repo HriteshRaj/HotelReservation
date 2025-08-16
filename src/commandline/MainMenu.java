@@ -80,8 +80,8 @@ public class MainMenu {
 
                         System.out.println("not available. searching +7 days later wait.....");
 
-                        Date checkInafter7days = new Date(checkInDate.getTime() + 7L * 24 * 60 * 60 * 1000);
-                        Date checkOutAfter7days = new Date(checkOutDate.getTime() + 7L * 24 * 60 * 60 * 1000);
+                        Date checkInafter7days = hotelResource.add7dayDelay(checkInDate);
+                        Date checkOutAfter7days = hotelResource.add7dayDelay(checkOutDate);
 
                         Collection<IRoom> otherRoom = hotelResource.findARoom(checkInafter7days, checkOutAfter7days);
 
